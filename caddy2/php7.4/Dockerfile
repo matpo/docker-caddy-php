@@ -48,7 +48,7 @@ RUN curl --tlsv1 -v -sS https://getcomposer.org/installer | php -- --install-dir
 COPY --from=caddy /config /config
 COPY --from=caddy /data /data
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
-COPY Caddyfile /etc/caddy/Caddyfile
+COPY Caddyfile Caddyfile.public /etc/caddy/
 
 COPY php-caddy-entrypoint /usr/local/bin/
 RUN chmod +x /usr/local/bin/php-caddy-entrypoint
