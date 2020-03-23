@@ -42,6 +42,9 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY config $PHP_INI_DIR/conf.d
 COPY php-fpm /usr/local/etc/php-fpm.d
 
+RUN curl --tlsv1 -v -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+        /usr/local/bin/composer global require hirak/prestissimo
+
 COPY --from=caddy /config /config
 COPY --from=caddy /data /data
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
