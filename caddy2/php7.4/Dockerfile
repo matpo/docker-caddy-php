@@ -7,6 +7,7 @@ ENV RUN_DEPS \
     libzip \
     libpng \
     libjpeg-turbo \
+#    libxslt \
     postgresql-libs
 
 ENV BUILD_DEPS \
@@ -14,7 +15,8 @@ ENV BUILD_DEPS \
     libzip-dev \
     libpng-dev \
     libjpeg-turbo-dev \
-    postgresql-dev
+    postgresql-dev \
+    libxslt-dev
 
 ENV PHP_EXTENSIONS \
     opcache \
@@ -24,7 +26,8 @@ ENV PHP_EXTENSIONS \
     mysqli \
     pdo_mysql \
     pgsql \
-    pdo_pgsql
+    pdo_pgsql \
+    xsl
 
 ENV PECL_EXTENSIONS \
     redis
