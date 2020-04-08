@@ -7,7 +7,7 @@ ENV RUN_DEPS \
     libzip \
     libpng \
     libjpeg-turbo \
-#    libxslt \
+    libxslt \
     postgresql-libs
 
 ENV BUILD_DEPS \
