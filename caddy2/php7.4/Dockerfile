@@ -1,6 +1,6 @@
 FROM caddy/caddy:v2.0.0-beta.17 as caddy
 
-FROM php:7.4-fpm-alpine
+FROM php:7.4-fpm-alpine3.10
 
 ENV RUN_DEPS \
     zlib \
@@ -46,7 +46,7 @@ COPY config $PHP_INI_DIR/conf.d
 COPY php-fpm /usr/local/etc/php-fpm.d
 
 RUN curl --tlsv1 -v -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-        /usr/local/bin/composer global require hirak/prestissimo
+    /usr/local/bin/composer global require hirak/prestissimo
 
 COPY --from=caddy /config /config
 COPY --from=caddy /data /data
