@@ -16,6 +16,7 @@ ENV BUILD_DEPS \
     libpng-dev \
     libjpeg-turbo-dev \
     postgresql-dev \
+    libgcrypt-dev \
     libxslt-dev
 
 ENV PHP_EXTENSIONS \
