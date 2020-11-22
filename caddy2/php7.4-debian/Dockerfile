@@ -14,8 +14,6 @@ ENV PHP_EXTENSIONS \
     bcmath \
     mysqli \
     pdo_mysql \
-    pgsql \
-    pdo_pgsql \
     xsl
 
 ENV PECL_EXTENSIONS \
