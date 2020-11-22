@@ -19,7 +19,7 @@ ENV PHP_EXTENSIONS \
 ENV PECL_EXTENSIONS \
     redis
 
-RUN apt-get install -y curl zip unzip libzip-dev libpng-dev
+RUN apt-get install -y curl zip unzip libzip-dev libpng-dev libjpeg62-turbo-dev libxslt-dev 
 RUN pecl install $PECL_EXTENSIONS \
     && docker-php-ext-install -j "$(nproc)" $PHP_EXTENSIONS \
     && docker-php-ext-enable $PECL_EXTENSIONS \
