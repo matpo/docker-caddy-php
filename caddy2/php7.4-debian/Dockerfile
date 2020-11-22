@@ -12,6 +12,7 @@ COPY --from=caddy /data /data
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 COPY Caddyfile /etc/caddy/
 
+COPY config $PHP_INI_DIR/conf.d
 COPY php-fpm /usr/local/etc/php-fpm.d
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
