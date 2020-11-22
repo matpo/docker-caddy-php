@@ -7,6 +7,24 @@ RUN apt-get install -y autoconf zlib1g-dev
 RUN pecl install grpc
 RUN docker-php-ext-enable grpc
 
+ENV PHP_EXTENSIONS \
+    opcache \
+    zip \
+    gd \
+    bcmath \
+    mysqli \
+    pdo_mysql \
+    pgsql \
+    pdo_pgsql \
+    xsl
+
+ENV PECL_EXTENSIONS \
+    redis
+
+RUN pecl install $PECL_EXTENSIONS \
+    && docker-php-ext-install -j "$(nproc)" $PHP_EXTENSIONS \
+    && docker-php-ext-enable $PECL_EXTENSIONS
+
 COPY --from=caddy /config /config
 COPY --from=caddy /data /data
 COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
