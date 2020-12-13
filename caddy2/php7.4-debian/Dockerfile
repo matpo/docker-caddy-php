@@ -17,7 +17,8 @@ ENV PHP_EXTENSIONS \
     xsl
 
 ENV PECL_EXTENSIONS \
-    redis
+    redis \
+    mongodb
 
 RUN apt-get install -y curl zip unzip libzip-dev libpng-dev libjpeg62-turbo-dev libxslt-dev 
 RUN pecl install $PECL_EXTENSIONS \
