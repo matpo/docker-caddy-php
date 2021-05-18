@@ -1,6 +1,6 @@
-FROM caddy/caddy:v2.0.0-beta.17 as caddy
+FROM caddy/caddy:2.4.0-alpine as caddy
 
-FROM php:7.4-fpm-alpine3.10
+FROM php:7.4.19-fpm-alpine3.13
 
 ENV RUN_DEPS \
     zlib \

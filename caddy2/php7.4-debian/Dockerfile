@@ -1,6 +1,6 @@
-FROM caddy:2.2.1 as caddy
+FROM caddy:2.4.0 as caddy
 
-FROM php:7.4-fpm
+FROM php:7.4.19-fpm
 
 RUN apt-get update
 RUN apt-get install -y autoconf zlib1g-dev libcurl4-openssl-dev pkg-config libssl-dev
