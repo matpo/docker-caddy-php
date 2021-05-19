@@ -17,7 +17,7 @@ RUN docker-php-ext-install gmp
 RUN docker-php-ext-install soap
 
 # Install graphicsmagick
-RUN apk add --no-cache jasper graphicsmagick
+RUN apk add --no-cache graphicsmagick
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS libtool g++ make autoconf graphicsmagick-dev
 RUN pecl install gmagick-2.0.5RC1 && docker-php-ext-enable gmagick
 
