@@ -9,21 +9,21 @@ RUN docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg && \
     NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
-    docker-php-ext-install -j${NPROC} gd && \
-    apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+    docker-php-ext-install -j${NPROC} gd
 
 RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
 RUN docker-php-ext-install soap
 
 # Install graphicsmagick
-RUN apk add --no-cache graphicsmagick
+# RUN apk add --no-cache graphicsmagick
 RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted jasper-dev
-RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.10/main/ jasper-libs graphicsmagick-dev
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.10/main/ jasper-libs
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.10/community/ graphicsmagick-dev
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS libtool g++ make autoconf
 RUN pecl install gmagick-2.0.5RC1 && docker-php-ext-enable gmagick
 
-RUN apk del --no-cache gmp-dev libmcrypt-dev zlib-dev libxml2-dev
+RUN apk del --no-cache gmp-dev libmcrypt-dev zlib-dev libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev
 
 # Install wkhtmltopdf from `testing` repository
 RUN apk add qt5-qtbase-dev libmhash-dev \
