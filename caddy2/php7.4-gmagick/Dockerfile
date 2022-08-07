@@ -18,8 +18,9 @@ RUN docker-php-ext-install soap
 
 # Install graphicsmagick
 RUN apk add --no-cache graphicsmagick
-RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted jasper-dev jasper-libs
-RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS libtool g++ make autoconf graphicsmagick-dev
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted jasper-dev
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.10/main/ jasper-libs graphicsmagick-dev
+RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS libtool g++ make autoconf
 RUN pecl install gmagick-2.0.5RC1 && docker-php-ext-enable gmagick
 
 RUN apk del --no-cache gmp-dev libmcrypt-dev zlib-dev libxml2-dev
